@@ -7,6 +7,10 @@ app.get('/efi/:loc', (req, res) => {
     res.send(`Location: ${req.params.loc}`);
 });
 
+app.get('/', (req, res) => {
+    res.send(`ok!`);
+});
+
 
 
 module.exports = app;
