@@ -9,8 +9,8 @@ app.get('/efi/:loc', (req, res) => {
     res.send(`Location: ${req.params.loc}`);
 });
 
-app.get('/', (req, res) => {
-    res.send(`ok!`);
+app.post('/:id', (req, res) => {
+    res.send(`ok! - teste efi ${req.body}`);
 });
 
 
