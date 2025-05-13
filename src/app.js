@@ -4,10 +4,11 @@ const cors = require('cors');
 
 const app = express();
 const route = express.Router();
+
 app.use(cors());
 app.use(express.json());
 
-route.get('/', async (req, resp) => {
+route.get('/api', async (req, resp) => {
     resp.status(200).json({ OK: 'API is running!' });
 }); // Route to check if the API is running
 
