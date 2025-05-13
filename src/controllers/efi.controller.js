@@ -18,7 +18,7 @@ const estanciarEfi = async (req, res) => {
       sandbox: true, // true se for ambiente de teste
     });
   
-    console.log('Certificado carregado com sucesso');
+    res.status(200).json({ OK: 'Certificado carregado!' });
 
   } catch (error) {
     console.error(error.response?.data || error.message);
