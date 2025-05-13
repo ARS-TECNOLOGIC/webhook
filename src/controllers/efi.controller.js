@@ -18,6 +18,8 @@ const estanciarEfi = async (req, res) => {
       sandbox: true, // true se for ambiente de teste
     });
   
+    console.log('Certificado carregado com sucesso');
+
   } catch (error) {
     console.error(error.response?.data || error.message);
     res.status(500).json({ error: 'Erro ao acessar a API da EFI' });
