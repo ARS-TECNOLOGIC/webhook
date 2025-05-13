@@ -20,7 +20,7 @@ const estanciarEfi = (req, res) => {
       sandbox: true, // true se for ambiente de teste
     });
     
-    res.status(200).json({ OK: 'Certificado carregado!' });
+  
     let params = {
       begin_date: '2025-01-01',
       end_date: '2025-05-13',
