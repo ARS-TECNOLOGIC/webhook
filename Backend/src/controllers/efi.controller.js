@@ -22,7 +22,7 @@ const estanciarEfi = (req, res) => {
 
   } catch (error) {
     console.error(error.response?.data || error.message);
-    res.status(500).json({ error: 'Erro ao acessar a API da EFI' });
+    res.status(500).json({ error});
   }
 };
 
