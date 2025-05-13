@@ -1,19 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const routes = require('./routes/index.js'); // Import the routes
 
-
-app.use(express.json());
 app.use(cors());
-app.get('/efi/:loc', (req, res) => {
-    res.send(`Location: ${req.params.loc}`);
-});
+app.use(express.json());
 
-app.post('/:id', (req, res) => {
-    res.send(`ok! - teste efi ${req.params.id} - ${req.body.id}`);
-});
-
-
+app.use('api/', routes); // Use the imported routes
 
 module.exports = app;
 // app.js
