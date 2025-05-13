@@ -1,16 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-// const routes = require('./routes/index.js'); // Import the routes
+const router = require('./routes/index.js');
+// const { connectDB } = require('./config/db.js');
 
-const app = express();
-const route = express.Router();
+const app= express();
 
 app.use(express.json());
 app.use(cors());
+app.use(router);
 
-route.get('/api', (req, resp) => {
-    return resp.status(200).json({ OK: 'API is running!' });
-}); // Route to check if the API is running
 
-module.exports = app;
-// app.js
+module.exports= app;
