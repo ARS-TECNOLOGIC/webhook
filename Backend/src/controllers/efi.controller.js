@@ -19,8 +19,22 @@ const estanciarEfi = (req, res) => {
       certificate: certPath,
       sandbox: true, // true se for ambiente de teste
     });
-  
+    
     res.status(200).json({ OK: 'Certificado carregado!' });
+    let params = {
+      begin_date: '2025-01-01',
+      end_date: '2025-05-13',
+      charge_type: 'billet',
+    }
+    efi.listCharges(params)
+      .then((response) => {
+        console.log('Response:', response);
+        res.status(200).json({ response });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        res.status(500).json({ error });
+      });
 
   } catch (error) {
     console.error(error.response?.data || error.message);
