@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const EfiPay = require('sdk-node-apis-efi');
 
-const estanciarEfi = async (req, res) => {
+const estanciarEfi = (req, res) => {
   try {
     // Recuperar e salvar o certificado no /tmp (único diretório gravável na Vercel)
     const certBase64 = process.env.EFI_CERT_BASE64;
