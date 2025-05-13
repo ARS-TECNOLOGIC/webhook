@@ -1,7 +1,7 @@
 const route = require('express').Router();
 const efiController = require('../controllers/efi.controller.js');
 
-route.get('/estanciar', async(req,resp)=>{
+route.get('/estanciar', (req,resp)=>{
     resp.status(200).json({OK:'Certificado carregado!'});
 }); // Route to estanciar Efi
 
