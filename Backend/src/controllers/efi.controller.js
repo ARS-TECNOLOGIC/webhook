@@ -6,6 +6,7 @@ require('dotenv').config();
 const estanciarEfi = (req, res) => {
   const certBase64 = process.env.EFI_CERT_BASE64;
   console.log('Certificado Base64:', certBase64);
+  res.status(200).json({ OK: 'Certificado carregado!' });
   // try {
   //   // Recuperar e salvar o certificado no /tmp (único diretório gravável na Vercel)
   //   const certBase64 = process.env.EFI_CERT_BASE64;
