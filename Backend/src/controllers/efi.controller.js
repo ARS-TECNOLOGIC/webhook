@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const EfiPay = require('sdk-node-apis-efi');
+require('dotenv').config();
 
 const estanciarEfi = (req, res) => {
   const certBase64 = process.env.EFI_CERT_BASE64;
