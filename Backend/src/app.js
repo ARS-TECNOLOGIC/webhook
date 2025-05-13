@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 route.get('/', (req, resp) => {
-    resp.status(200).json({ OK: 'API is running!' });
+    return resp.status(200).json({ OK: 'API is running!' });
 }); // Route to check if the API is running
 
 module.exports = app;
