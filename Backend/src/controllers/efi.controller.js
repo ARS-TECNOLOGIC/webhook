@@ -27,12 +27,12 @@ const estanciarEfi = (req, res) => {
   }
 };
 
-const extrairNotification = (req, res) => {
+const extrairNotification = async (req, res) => {
   const efi = estanciarEfi(req, res);
   const params = req.params.key
  
 
-  efi.getNotification(params).then((resposta) => {
+ await efi.getNotification(params).then((resposta) => {
     // console.log(resposta) 
     res.status(200).json({ resposta });
 
