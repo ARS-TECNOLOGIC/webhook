@@ -29,7 +29,9 @@ const estanciarEfi = (req, res) => {
 
 const extrairNotification = async (req, res) => {
   const efi = estanciarEfi(req, res);
-  const params = req.params.key
+  const params = 'efe1c073-44c4-427a-b953-542ac31a72f3'
+
+
  
 
   await efi.getNotification(params).then((resposta) => {
