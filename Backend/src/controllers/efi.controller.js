@@ -50,12 +50,8 @@ const extrairNotification = (req, res) => {
 
   efi.getNotification(params).then((resposta) => {
     // console.log(resposta) 
-    resposta.data.forEach(item => {
-      console.log("ID:", item.id);
-      console.log("Status:", item.status.current);
-
-    });// Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
-    res.status(200).json({ message: 'Notification extracted successfully' });
+    res.status(200).json({ resposta });
+    
   })
     .catch((error) => {
       console.log(error)
@@ -66,5 +62,5 @@ const extrairNotification = (req, res) => {
 
 module.exports = {
   estanciarEfi,
-  extrairNotification
+  
 };
