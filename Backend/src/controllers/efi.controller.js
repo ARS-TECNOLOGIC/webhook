@@ -43,7 +43,7 @@ const estanciarEfi = (req, res) => {
 };
 
 const extrairNotification = (req, res) => {
-  const efi = estanciarEfi();
+  const efi = estanciarEfi;
   const params = {
     token: 'da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2',
   };
