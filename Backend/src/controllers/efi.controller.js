@@ -7,10 +7,6 @@ const extrairNotification = async (req, res) => {
 
     efi.getNotification(params)
         .then((resposta) => {
-            resposta.data.forEach(item => {
-                console.log("ID:", item.id);
-                console.log("Status:", item.status.current);
-            });
             res.status(200).json(resposta.data);
         })
         .catch((error) => {
