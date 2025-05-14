@@ -4,7 +4,7 @@ const EfiPay = require('sdk-node-apis-efi');
 require('dotenv').config();
 
 const estanciarEfi = (req, res) => {
-  
+
   try {
     // Recuperar e salvar o certificado no /tmp (único diretório gravável na Vercel)
     const certBase64 = process.env.EFI_CERT_BASE64;
@@ -19,8 +19,8 @@ const estanciarEfi = (req, res) => {
       certificate: certPath,
       sandbox: true, // true se for ambiente de teste
     });
-    
-  
+
+
     let params = {
       begin_date: '2025-01-01',
       end_date: '2025-05-13',
@@ -38,10 +38,33 @@ const estanciarEfi = (req, res) => {
 
   } catch (error) {
     console.error(error.response?.data || error.message);
-    res.status(500).json({ error});
+    res.status(500).json({ error });
   }
 };
 
+const extrairNotification = (req, res) => {
+  const efi = estanciarEfi();
+  const params = {
+    token: 'da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2',
+  };
+
+  efi.getNotification(params).then((resposta) => {
+    // console.log(resposta) 
+    resposta.data.forEach(item => {
+      console.log("ID:", item.id);
+      console.log("Status:", item.status.current);
+
+    });// Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
+    res.status(200).json({ message: 'Notification extracted successfully' });
+  })
+    .catch((error) => {
+      console.log(error)
+    })
+
+};
+
+
 module.exports = {
   estanciarEfi,
+  extrairNotification
 };
