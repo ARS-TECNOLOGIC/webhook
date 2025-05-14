@@ -26,15 +26,7 @@ const estanciarEfi = (req, res) => {
       end_date: '2025-05-13',
       charge_type: 'billet',
     }
-    efi.listCharges(params)
-      .then((response) => {
-        console.log('Response:', response);
-        res.status(200).json({ response });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        res.status(500).json({ error });
-      });
+    return efi; 
 
   } catch (error) {
     console.error(error.response?.data || error.message);
@@ -43,7 +35,7 @@ const estanciarEfi = (req, res) => {
 };
 
 const extrairNotification = (req, res) => {
-  const efi = estanciarEfi;
+  const efi = estanciarEfi(req, res);
   const params = {
     token: 'da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2',
   };
