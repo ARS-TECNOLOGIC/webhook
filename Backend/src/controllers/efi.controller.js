@@ -27,22 +27,24 @@ const estanciarEfi = (req, res) => {
   }
 };
 
-const extrairNotification = async (req, res) => {
-  const efi = estanciarEfi(req, res);
+const extrairNotification =  (req,res) => {
+  const efipay = estanciarEfi;
   const params = 'efe1c073-44c4-427a-b953-542ac31a72f3'
+  
+  efipay.getNotification(params)
+	.then((resposta) => {
+    res.status(200).json(resposta.data);
+		// console.log(resposta) 
+        resposta.data.forEach(item => {
+            console.log("ID:", item.id);
+            console.log("Status:", item.status.current);
+          });// Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
+	})
+	.catch((error) => {
+		console.log(error)
+	})
+}
 
-
- 
-
-  await efi.getNotification(params).then((resposta) => {
-    res.status(200).json(resposta);
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(500).json({ error: error.message });
-  })
-
-};
 
 
 module.exports = {
