@@ -32,15 +32,13 @@ const extrairNotification = async (req, res) => {
   const params = req.params.key
  
 
- await efi.getNotification(params).then((resposta) => {
-    // console.log(resposta) 
+  await efi.getNotification(params).then((resposta) => {
     res.status(200).json(resposta.data);
-
   })
-    .catch((error) => {
-      console.log(error)
-      res.status(500).json({ error: error.message });
-    })
+  .catch((error) => {
+    console.log(error)
+    res.status(500).json({ error: error.message });
+  })
 
 };
 
