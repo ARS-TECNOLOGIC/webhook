@@ -1,8 +1,10 @@
 const {instanceEfi} = require('../config/concteEfi');
 
+const efi = instanceEfi();
+
 const extrairNotification = async (req, res) => {
 
-    const efi = instanceEfi();
+    
     const params ='da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2';
 
     efi.getNotification(params)
