@@ -1,6 +1,6 @@
-const {instanceEfi} = require('../config/concteEfi');
+const {estanciarEfi} = require('../config/concteEfi');
 
-const efi = instanceEfi();
+const efi = estanciarEfi();
 
 const extrairNotification = async (req, res) => {
 
