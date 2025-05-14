@@ -29,7 +29,7 @@ const estanciarEfi = (req, res) => {
 
 const extrairNotification = (req, res) => {
   const efi = estanciarEfi(req, res);
-  const params = req.params.key;
+  const params = req.params.key
  
 
   efi.getNotification(params).then((resposta) => {
@@ -39,6 +39,7 @@ const extrairNotification = (req, res) => {
   })
     .catch((error) => {
       console.log(error)
+      res.status(500).json({ error: error.message });
     })
 
 };
