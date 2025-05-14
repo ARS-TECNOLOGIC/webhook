@@ -32,7 +32,7 @@ const extrairNotification = async (req, res) => {
     const efi = estanciarEfi(req, res);
     const params ='da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2';
 
-    res.status(200).json({ message: `Notificação recebida com sucesso! ${params}` });		
+    res.status(200).json({ message: `Notificação recebida com sucesso! ${efi}` });		
 }
 
 module.exports = {
