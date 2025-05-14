@@ -4,7 +4,7 @@ const EfiPay = require('sdk-node-apis-efi');
 require('dotenv').config();
 
 const estanciarEfi = (req, res) => {
-
+  // Verifica se o certificado está definido
   try {
     // Recuperar e salvar o certificado no /tmp (único diretório gravável na Vercel)
     const certBase64 = process.env.EFI_CERT_BASE64;
@@ -19,14 +19,7 @@ const estanciarEfi = (req, res) => {
       certificate: certPath,
       sandbox: true, // true se for ambiente de teste
     });
-
-
-    let params = {
-      begin_date: '2025-01-01',
-      end_date: '2025-05-13',
-      charge_type: 'billet',
-    }
-    return efi; 
+    return efi;
 
   } catch (error) {
     console.error(error.response?.data || error.message);
@@ -36,14 +29,13 @@ const estanciarEfi = (req, res) => {
 
 const extrairNotification = (req, res) => {
   const efi = estanciarEfi(req, res);
-  const params = {
-    token: 'da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2',
-  };
+  const params = req.params.key;
+ 
 
   efi.getNotification(params).then((resposta) => {
     // console.log(resposta) 
     res.status(200).json({ resposta });
-    
+
   })
     .catch((error) => {
       console.log(error)
