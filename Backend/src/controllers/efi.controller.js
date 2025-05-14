@@ -62,5 +62,5 @@ const extrairNotification = (req, res) => {
 
 module.exports = {
   estanciarEfi,
-  
+  extrairNotification
 };
