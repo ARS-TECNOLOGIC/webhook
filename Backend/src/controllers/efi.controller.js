@@ -34,7 +34,7 @@ const extrairNotification = async (req, res) => {
 
  await efi.getNotification(params).then((resposta) => {
     // console.log(resposta) 
-    res.status(200).json({ resposta });
+    res.status(200).json(resposta.data);
 
   })
     .catch((error) => {
