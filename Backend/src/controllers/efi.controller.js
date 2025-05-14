@@ -32,21 +32,7 @@ const extrairNotification = async (req, res) => {
     const efi = estanciarEfi(req, res);
     const params ='da6cc1f4-f6aa-46bc-8fad-7a0db7ad77d2';
 
-    efi.getNotification(params)
-      .then((resposta) => {
-        // Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
-        resposta.data.forEach(item => {
-          console.log("ID:", item.id);
-          console.log("Status:", item.status.current);
-        });
-        res.status(200).json(resposta.data);
-      })
-      .catch((error) => {
-        console.error(error.response?.data || error.message);
-        res.status(500).json({ error });
-      });
-
-    }
+    res.status(200).json({ message: `Notificação recebida com sucesso! ${params}` });		
 
 module.exports = {
   estanciarEfi,
