@@ -27,25 +27,26 @@ const estanciarEfi = (req, res) => {
   }
 };
 
-const extrairNotification =  (req,res) => {
-  const efipay = estanciarEfi;
-  const params = 'efe1c073-44c4-427a-b953-542ac31a72f3'
-  
-  efipay.getNotification(params)
-	.then((resposta) => {
-    res.status(200).json(resposta.data);
-		// console.log(resposta) 
+const extrairNotification = async (req, res) => {
+
+    const efi = estanciarEfi(req, res);
+    const params ='efe1c073-44c4-427a-b953-542ac31a72f3';
+
+    efi.getNotification(params)
+      .then((resposta) => {
+        // Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
         resposta.data.forEach(item => {
-            console.log("ID:", item.id);
-            console.log("Status:", item.status.current);
-          });// Aqui você tera acesso a resposta da API e os campos retornados de forma intuitiva
-	})
-	.catch((error) => {
-		console.log(error)
-	})
-}
+          console.log("ID:", item.id);
+          console.log("Status:", item.status.current);
+        });
+        res.status(200).json(resposta.data);
+      })
+      .catch((error) => {
+        console.error(error.response?.data || error.message);
+        res.status(500).json({ error });
+      });
 
-
+    }
 
 module.exports = {
   estanciarEfi,
