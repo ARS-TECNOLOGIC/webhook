@@ -6,6 +6,7 @@ require('dotenv').config();
 // Recuperar e salvar o certificado no /tmp (único diretório gravável na Vercel)
 
 const certBase64 = process.env.EFI_CERT_BASE64;
+const certPath = null
 if (certBase64 != 'teste') {
     const certBuffer = Buffer.from(certBase64, 'base64');
     const certPath = path.join('/tmp', 'certificado.p12');
