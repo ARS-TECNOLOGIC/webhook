@@ -11,12 +11,11 @@ if (certBase64 != 'teste') {
     const certPath = path.join('/tmp', 'certificado.p12');
     fs.writeFileSync(certPath, certBuffer);
 }
-
+const certificate = process.env.EFI_CERT_BASE64 == 'teste' ? path.join('./config/homolog.p12') : certPath
 module.exports = {
     client_id: process.env.EFI_CLIENT_ID,
     client_secret: process.env.EFI_CLIENT_SECRET,
-    certificate: process.env.EFI_CERT_BASE64 == 'teste' ? path.join('./config/homolog.p12') : certPath, // Caminho do certificado
-    // certificate: './config/homolog.p12', // Caminho do certificado     
+    certificate,      
     sandbox: true, // true se for ambiente de teste    
     cert_base64: false
 }
